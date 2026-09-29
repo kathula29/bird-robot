@@ -48,31 +48,21 @@
 
 # 
 
-# | Folder | Purpose |
+|**Folder**|**Purpose**|
+|-|-|
+|CAD/editable|Editable CAD source files|
+|CAD/STL|Mesh exports for printing|
+|CAD/STEP|STEP files for CAD exchange|
+|CAD/drawings|Drawings and design reference images|
+|firmware|OpenRB-150 controller firmware|
+|host-software|Software running on the development computer or onboard computer|
+|simulation|Robot models and simulation configurations|
+|tests|Test scripts, procedures and recorded results|
+|BOM|Bill of materials and component-list references|
+|logs|Daily build logs|
+|docs|Project documentation, revision records and setup instructions|
 
-# | --- | --- |
-
-# | CAD/editable | Editable CAD source files |
-
-# | CAD/STL | Mesh exports for printing |
-
-# | CAD/STEP | STEP files for CAD exchange |
-
-# | CAD/drawings | Drawings and design reference images |
-
-# | firmware | OpenRB-150 controller firmware |
-
-# | host-software | Software running on the development computer or onboard computer |
-
-# | simulation | Robot models and simulation configurations |
-
-# | tests | Test scripts, procedures and recorded results |
-
-# | BOM | Bill of materials and component-list references |
-
-# | logs | Daily build logs |
-
-# | docs | Project documentation, revision records and setup instructions |
+# 
 
 # 
 
