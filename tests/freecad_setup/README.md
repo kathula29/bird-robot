@@ -2,15 +2,15 @@
 
 # 
 
-# \*\*Task:\*\* RB-003.3 — Verify setup and backups  
+# Task: RB-003.3 — Verify setup and backups  
 
-# \*\*Owner:\*\* Prashant  
+# Owner: Prashant  
 
-# \*\*Location:\*\* https://github.com/kathula29/bird-robot/tree/docs/repository-setup/tests/freecad\_setup
+# Location: https://github.com/kathula29/bird-robot/tree/docs/repository-setup/tests/freecad\_setup
 
 # 
 
-# \## Overview
+# Overview
 
 # 
 
@@ -26,7 +26,7 @@
 
 # 
 
-# \## Design Specifications
+#  Design Specifications
 
 |**Property**|**Nominal value**|
 |-|-|
@@ -44,7 +44,7 @@
 
 # 
 
-# \## Folder Contents
+#  Folder Contents
 
 # 
 
