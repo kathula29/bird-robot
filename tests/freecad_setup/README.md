@@ -41,6 +41,8 @@ These values describe the CAD design, not physical measurements.
 6. Reopen the generated FCStd and STEP files in FreeCAD.
 7. Record the tested commit and results in `verification-results.md`.
 
+For the automated command-line check, run `freecadcmd.exe` with the absolute path to `sample_plate.FCMacro`. If using the FreeCAD command runner, keep the clone path free of spaces; this is a runner limitation observed during the verification. The normal FreeCAD GUI procedure above supports the interactive 3D-view check.
+
 ## Scope
 
 This sample covers initial CAD and development-environment verification only. It does not demonstrate robot assembly, wiring, motor performance, walking, durability or production readiness.
