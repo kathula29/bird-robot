@@ -6,7 +6,7 @@
 | Servo motor | XL330-M288-T | Model confirmed; hardware revision not recorded |
 | FreeCAD | 1.1.3 | Installed version recorded; sample verification is in RB-003.3 |
 | Arduino IDE | 2.3.10 | Installed version recorded |
-| MuJoCo | 3.14.0 | Installed version reported; Python environment/path still to be confirmed |
+| MuJoCo | 3.14.0 | Installed and import-verified on 1 October 2026 using Python 3.14.2 (64-bit) at `C:\Users\Android\Desktop\bird-robot\.venv\Scripts\python.exe` |
 | GitHub Desktop | 3.6.6 (x64) | User-reported installed version; reconciled with the source/licence register |
 | OpenRB-150 board package | 0.2.1 | Installed package recorded |
 | Dynamixel2Arduino | 0.8.1 | Installed controller library recorded |
