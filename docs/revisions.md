@@ -1,23 +1,16 @@
-# \# Hardware, Software and CAD Revision Record
+# Hardware, Software and CAD Revision Record
 
-# 
+| Item | Model / version | Verification status |
+| --- | --- | --- |
+| Controller | OpenRB-150 | Model confirmed; board hardware revision not recorded |
+| Servo motor | XL330-M288-T | Model confirmed; hardware revision not recorded |
+| FreeCAD | 1.1.3 | Installed version recorded; sample verification is in RB-003.3 |
+| Arduino IDE | 2.3.10 | Installed version recorded |
+| MuJoCo | 3.14.0 | Installed version reported; Python environment/path still to be confirmed |
+| GitHub Desktop | 3.6.6 (x64) | User-reported installed version; reconciled with the source/licence register |
+| OpenRB-150 board package | 0.2.1 | Installed package recorded |
+| Dynamixel2Arduino | 0.8.1 | Installed controller library recorded |
+| Sample plate CAD | `sample_plate.FCStd` / `sample_plate.step` | Tested revision recorded in RB-003.3 verification results |
+| Robot CAD | `CAD/editable/owl_robot_rev_a.FCStd` | Planning revision recorded separately; engineering approval remains pending |
 
-# Last updated: 2026-09-29
-
-# 
-
-|**Item** |**Model / version** |**Verification status**|
-|-|-|-|
-|Controller |OpenRB-150|Model confirmed; board revision pending|
-| Servo motor|XL330-M288-T|Model confirmed; board revision pending|
-|FreeCAD|1.1.3|Shown in sample-design screenshots|
-|Arduino IDE|2.x|Record installed version|
-|MuJoCo |3.14|Record installed version|
-|GitHub Desktop|3.22.0|Record installed version|
-|Sample plate CAD|Revision pending| Add file link and revision or commit|
-| Robot CAD|Pending|Record when original design is added|
-
-
-
-# Unknown details remain pending until checked.
-
+Unknown hardware revisions and final approval decisions remain pending until evidence is available.

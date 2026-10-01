@@ -1,116 +1,110 @@
-# \# Development Environment Setup Guide
+# Development Environment Setup Guide
 
-# 
+## RB-003.2 — Install and record development tools
 
-# Task: RB-003.2 — Install and record development tools  
+**Owner:** Prashant
+**Last updated:** 2026-10-01
+**Status:** In review
 
-# Owner: Prashant  
+This guide records the Windows development environment used for the bird-robot prototype. It documents the installed tools and the setup path used for the controller software. Fresh-copy execution, CAD reopening and backup recovery are recorded separately under RB-003.3.
 
-# Record updated: 2026-09-29  
+## Windows computer
 
-# Status: In progress
+| Item | Recorded value | Evidence/status |
+| --- | --- | --- |
+| Operating system | Windows 11 Pro | User-supplied system information |
+| Windows version | 25H2 | User-supplied system information |
+| OS build | 26200.9457 | User-supplied system information |
+| Processor | Intel Core i9-14900KS, 3.20 GHz | User-supplied system information |
+| Installed RAM | 64.0 GB; 63.7 GB usable | User-supplied system information |
+| System type | 64-bit operating system, x64-based processor | User-supplied system information |
+| Dedicated graphics | NVIDIA GeForce RTX 3050, 6 GB | User-supplied system information |
+| Integrated graphics | Intel UHD Graphics | User-supplied system information |
+| Installation drive | C: | Drive identified from the working Windows setup; direct measurement record still required |
+| Free space on installation drive | Approximately 164 GB reported | Replace with a fresh C: measurement before final approval |
 
-# 
+The earlier 932 GB total / 572 GB used values describe the reported storage device and are not used as the installation-drive free-space record. The final record must be the free space on the drive containing the installed tools.
 
-# \## Windows computer
+## Installed software and controller packages
 
+| Tool/package | Installed version | Status / evidence |
+| --- | --- | --- |
+| Python | 3.14.2, 64-bit CPython | Confirmed from the supplied Python startup output |
+| Git | 2.51.0.windows.1 | Confirmed from the supplied Git version output |
+| Arduino IDE | 2.3.10 | Installed version recorded |
+| FreeCAD | 1.1.3 | Installed version recorded; sample CAD check is in RB-003.3 |
+| MuJoCo | 3.14.0 | Installed version reported; the selected Python environment is system Python 3.14.2 |
+| GitHub Desktop | 3.6.6 (x64) | User-reported installed version; the older 3.22.0 entry in `docs/revisions.md` has been reconciled |
+| OpenRB-150 board package | OpenRB-150, version 0.2.1 | Installed board package recorded |
+| Controller library | Dynamixel2Arduino, version 0.8.1 | Library used by the working sketch and recorded in the licence register |
 
+The versions above describe the local development setup. They do not by themselves approve a firmware release or a hardware power test.
 
-|Item|Recorded specification|
-|-|-|
-|Operating system|Windows 11 Pro|
-|Windows version|25H2|
-|OS build|26200.9457|
-|Processor|Intel Core i9-14900KS, 3.20 GHz|
-|Installed RAM|64.0 GB; 63.7 GB usable|
-|System type|64-bit operating system, x64-based processor|
-|Dedicated graphics|NVIDIA GeForce RTX 3050, 6 GB|
-|Integrated graphics|Intel UHD Graphics|
-|Reported storage|932 GB total; 572 GB used|
-|Calculated free storage|Approximately 360 GB; individual installation-drive free space still to be recorded|
+## Setup steps used
 
+### 1. Python and Git
 
+1. Install 64-bit Python for Windows and confirm the interpreter with `python --version`.
+2. Use the installed system Python 3.14.2 interpreter for the reported MuJoCo installation.
+3. Confirm Git with `git --version`.
+4. Use GitHub Desktop 3.6.6 to clone the repository, select the `docs/repository-setup` branch, review changes and publish commits.
 
+The exact MuJoCo package command and environment path were not captured in the original record. If a virtual environment was used instead of system Python, record its name/path before treating this guide as final.
 
+### 2. Arduino IDE and OpenRB-150
 
-# The storage figures above replace the earlier 164 GB report for this record. Confirm the drive being measured before comparing the two readings.
+1. Install Arduino IDE 2.3.10.
+2. Open **Boards Manager**, search for the ROBOTIS OpenRB-150 package, and install/select OpenRB-150 package version 0.2.1.
+3. Connect the OpenRB-150 to the Windows computer by USB and select the detected COM port. The recorded port was COM3; Windows may assign a different port later.
+4. Open **Library Manager**, search for `Dynamixel2Arduino`, and install version 0.8.1.
+5. Compile/upload the project controller sketch using the selected OpenRB-150 board and the recorded library.
+6. Keep USB and controller evidence separate from the later powered-motor tests; the existing USB evidence is linked below.
 
-# 
+### 3. FreeCAD
 
-# \## Installed software
+1. Install FreeCAD 1.1.3.
+2. Open the project CAD files with FreeCAD.
+3. Use the repository's documented sample macro and CAD verification under RB-003.3 for fresh-copy execution and reopening results.
 
-|Tool|Version|Status / evidence|
-|-|-|-|
-|Python|3.14.2, 64-bit|Confirmed from supplied Python startup output|
-|Git|2.51.0.windows.1|Confirmed from supplied Git version output|
-|Arduino IDE|2.3.10|Installed version reported|
-|FreeCAD|1.1.3|Previously recorded in screenshots|
-|MuJoCo|3.14.0|Previously reported installed; Python environment details pending|
-|GitHub Desktop|Exact version pending|Used for repository work|
-|OpenRB board package|Name and version pending|Record from installed board packages|
-|Controller libraries|Names and versions pending|Record the libraries used by the working sketch|
+### 4. MuJoCo
 
+1. Install MuJoCo 3.14.0 for the selected 64-bit Python 3.14.2 environment.
+2. Keep the installation/environment path in the local setup record.
+3. Do not claim that a robot simulation has been validated by this setup ticket; simulation work is recorded separately.
 
+## OpenRB-150 USB/controller record
 
+| Item | Recorded value |
+| --- | --- |
+| Selected board | OpenRB-150 |
+| Detected COM port | COM3 |
+| Board-package version | 0.2.1 |
+| Controller library | Dynamixel2Arduino |
+| Library version | 0.8.1 |
+| USB data connection | Previously checked using Arduino IDE with the OpenRB-150 and XL330-M288-T |
+| Evidence | [Existing Zoho RB-003.2 comment and attachment](https://projects.zoho.in/portal/nestackdotcom#zp/projects/215875000001685046/tasks/custom-view/215875000000028003/list/task-detail/215875000001689092?group_by=tasklist), dated 2026-09-25 (`WIN_20260922_14_52_03_Pro.jpg`) |
 
+The USB evidence is a reference to the existing Zoho comment and attachment; the test is not repeated here. COM3 is the port observed on this computer and may change on another USB port or computer.
 
+## External reference links
 
+- [Arduino IDE installation guide](https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/)
+- [MuJoCo installation reference](https://www.hemantkumawat.com/blog/2024/mujoco/)
+- [FreeCAD installation reference](https://www.geeksforgeeks.org/installation-guide/how-to-install-freecad-on-windows/)
 
-# These records confirm reported installation details, not compatibility of every tool combination.
+These links are general references. The recorded versions and project-specific steps above are the authoritative setup record.
 
-# 
+## Mac status
 
-# \## USB connection
+The Mac check is blocked because Mac access is unavailable. The founder must either provide access or agree to defer this check. No Mac specifications or installed-tool claims are made in this record.
 
-# 
+## Scope boundary
 
-# The Windows USB data connection with the OpenRB-150 was previously checked using Arduino IDE.
+Sample-script execution, CAD/STEP reopening, fresh-copy recovery and repository credential checks belong to RB-003.3 and are recorded there. This ticket records the development environment and setup instructions only.
 
-# 
+## Finalisation items
 
-# \## USB connection and controller setup
-
-|Item|Recorded value|
-|-|-|
-|Selected board|OpenRB-150|
-|Detected COM port|COM3|
-|Board-package version|0.2.1|
-|Controller library|Dynamixel2Arduino|
-|Library version|0.8.1|
-|USB data connection|Previously checked using Arduino IDE|
-|Evidence link|Pending — add the direct link to the existing attachment or its Zoho comment|
-
-
-
-# COM3 is the port observed on this computer. It may change when
-
-# the board is connected to another USB port or computer.
-
-# 
-
-# \## Reproducible setup instructions — pending completion
-
-# 
-
-# Set-up guide link for MuJoCo Installation: https://www.hemantkumawat.com/blog/2024/mujoco/
-
-# Set-up guide link for Arduino IDE Installation: https://docs.arduino.cc/software/ide-v2/tutorials/getting-started/ide-v2-downloading-and-installing/
-
-# Set-up guide link for FreeCAD Installation: 
-
-# https://www.geeksforgeeks.org/installation-guide/how-to-install-freecad-on-windows/
-
-
-
-# \## Mac status
-
-# 
-
-# Blocked—Mac access is unavailable. Founder to arrange access or agree to defer the check.
-
-# 
-
-# 
-
-# Sample-script, CAD and backup verification are recorded separately in RB-003.3.
-
+- Replace the reported C: free-space value with a fresh measurement from the installation drive.
+- Confirm the exact MuJoCo Python environment/path.
+- Obtain the founder's decision on Mac access or deferral.
+- Attach or link the updated guide in Zoho for review.
