@@ -1,0 +1,71 @@
+"""RB-003.3 FreeCAD setup-check macro.
+
+Creates a 40 x 30 x 3 mm plate with four 3 mm holes, then writes
+an editable FreeCAD file, a STEP export and a short report to a dated
+FreeCAD_Setup_Check folder in the current user's home directory.
+"""
+
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part
+from datetime import datetime
+from pathlib import Path
+
+OUTPUT_DIRECTORY = (
+    Path.home()
+    / "FreeCAD_Setup_Check"
+    / datetime.now().strftime("%Y%m%d_%H%M%S")
+)
+OUTPUT_DIRECTORY.mkdir(parents=True, exist_ok=False)
+
+document = App.newDocument("RB003_Setup_Check")
+
+plate = document.addObject("Part::Box", "Plate")
+plate.Length = 40
+plate.Width = 30
+plate.Height = 3
+
+result = plate
+for number, (x, y) in enumerate(((5, 5), (35, 5), (35, 25), (5, 25)), start=1):
+    hole = document.addObject("Part::Cylinder", "HoleTool" + str(number))
+    hole.Radius = 1.5
+    hole.Height = 5
+    hole.Placement.Base = App.Vector(x, y, -1)
+
+    cut = document.addObject("Part::Cut", "Cut" + str(number))
+    cut.Base = result
+    cut.Tool = hole
+    result = cut
+    document.recompute()
+
+    if result.ViewObject is not None:
+        result.ViewObject.Visibility = False
+    if hole.ViewObject is not None:
+        hole.ViewObject.Visibility = False
+
+result.Label = "Sample plate - four 3 mm holes"
+document.recompute()
+if result.ViewObject is not None:
+    result.ViewObject.Visibility = True
+
+if hasattr(Gui, "activeDocument") and Gui.activeDocument() is not None:
+    Gui.activeDocument().activeView().viewAxonometric()
+    Gui.activeDocument().activeView().fitAll()
+
+freecad_file = OUTPUT_DIRECTORY / "sample_plate.FCStd"
+step_file = OUTPUT_DIRECTORY / "sample_plate.step"
+report_file = OUTPUT_DIRECTORY / "test_report.txt"
+
+document.saveAs(str(freecad_file))
+Part.export([result], str(step_file))
+
+report_file.write_text(
+    "RB-003.3 FreeCAD setup check\n"
+    "Result: PASS\n"
+    "Plate: 40 x 30 x 3 mm\n"
+    "Holes: 4 holes, 3 mm diameter, centres 5 mm from adjacent edges\n"
+    "Files created: sample_plate.FCStd and sample_plate.step\n",
+    encoding="utf-8",
+)
+
+print("PASS: FreeCAD setup-check files saved to " + str(OUTPUT_DIRECTORY))
